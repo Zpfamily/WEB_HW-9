@@ -40,8 +40,12 @@ def main():
     quotes, authors = scrape_quotes("http://quotes.toscrape.com/")
     
     quotes_filename = os.path.join(current_directory, "quotes.json")
+    if os.path.exists("quotes.json"):
+        os.remove("quotes.json")
     save_to_json(quotes, quotes_filename)
-
+    
+    if os.path.exists("authors.json"):
+        os.remove("authors.json")
     authors_filename = os.path.join(current_directory, "authors.json")
     save_to_json(authors, authors_filename)
 
